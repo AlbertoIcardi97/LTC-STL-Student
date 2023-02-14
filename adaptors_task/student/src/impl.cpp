@@ -11,20 +11,20 @@ const std::vector<std::pair<char, char>> brackets {
 
 enum class KindOfChar {OpenBracket, ClosedBracket, NoBracket};
 
-std::pair<KindOfChar,  char> Find_KindOfChar_CorrespondingBracket(const char & c){
+std::pair<KindOfChar,  char> find_kindofchar_correspondingbracket(char c){
     for(const auto & b : brackets ){
-         if(c==b.first){
+         if(const bool isOpenBracket=(c==b.first)){
             return std::make_pair(KindOfChar::OpenBracket, b.second);
          }
 
-         if (c==b.second){
+         if (const bool isClosedBracket=(c==b.second)){
             return std::make_pair(KindOfChar::ClosedBracket, b.first);
          }
 
         
     }
 
-     return std::make_pair(KindOfChar::NoBracket,'\0');
+     return std::make_pair(KindOfChar::NoBracket, char{});
 
 };
 
@@ -37,7 +37,7 @@ bool isValid(const std::string& source){
         KindOfChar KindOfc;
         char CorrespondingBracket;
 
-        std::tie( KindOfc, CorrespondingBracket) = Find_KindOfChar_CorrespondingBracket (c);
+        std::tie( KindOfc, CorrespondingBracket) =find_kindofchar_correspondingbracket (c);
 
         switch (KindOfc){
             case KindOfChar::OpenBracket :
